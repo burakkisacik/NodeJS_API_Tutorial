@@ -6,6 +6,7 @@ const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const fileupload = require('express-fileupload');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 //load env file in order to use environment variables
 dotenv.config({ path: './config/config.env' });
@@ -23,6 +24,9 @@ const app = express();
 
 //Body parser
 app.use(express.json());
+
+//Cookie Parser
+app.use(cookieParser());
 
 //this middleware(logger) will only run in dev environment
 if (process.env.NODE_ENV === 'development') {
