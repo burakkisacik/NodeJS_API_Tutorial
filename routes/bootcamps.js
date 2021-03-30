@@ -9,8 +9,10 @@ const {
   bootcampPhotoUpload,
 } = require('../controllers/bootcamps');
 
+//Get the model
 const Bootcamp = require('../models/Bootcamp');
 
+//Get advande results middleware to quert in results
 const advancedResults = require('../middleware/advancedResults');
 
 //Include other resource routers
@@ -18,6 +20,7 @@ const courseRouter = require('./courses');
 
 const router = express.Router();
 
+//Auth methods
 const { protect, authorize } = require('../middleware/auth');
 
 //Re-route into other resource router

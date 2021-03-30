@@ -7,12 +7,17 @@ const {
   deleteCourse,
 } = require('../controllers/courses');
 
+//Get course model
 const Course = require('../models/Course');
 
+//Get advande results middleware to quert in results
 const advancedResults = require('../middleware/advancedResults');
 
+/*You must pass {mergeParams: true} to the child router
+if you want to access the params from the parent router.*/
 const router = express.Router({ mergeParams: true });
 
+//Auth methods
 const { protect, authorize } = require('../middleware/auth');
 
 router
