@@ -49,14 +49,11 @@ exports.login = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
-// @desc    Log user out / Clear cookie
-// @route   GET /api/v1/auth/logout
-// @access  Private
+// @desc      Log user out / clear cookie
+// @route     GET /api/v1/auth/logout
+// @access    Public
 exports.logout = asyncHandler(async (req, res, next) => {
-  res.cookie('token', 'none', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
+  res.clearCookie('token');
 
   res.status(200).json({
     success: true,
@@ -68,7 +65,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/auth/me
 // @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
+  const user = req.user;
 
   res.status(200).json({
     success: true,
