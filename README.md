@@ -1,6 +1,6 @@
 
 # DevCamper API
-
+This repository created by following the udemy course of Brad Traversy
 Backend API for the DevCamper application to manage bootcamps, courses, reviews, users and authentication
 
 ## Indices
